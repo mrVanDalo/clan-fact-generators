@@ -12,9 +12,9 @@
 
   };
 
-  outputs = inputs@{ flake-parts, ... }:
+  outputs = inputs@{ flake-parts, clan-core, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ ];
+      systems = [ "x86_64-linux" ];
       imports = [
         inputs.clan-core.flakeModules.default
       ];
@@ -46,7 +46,6 @@
               clanCore.facts.secretStore = "password-store";
               clanCore.facts.publicDirectory = "/dev/null";
 
-
               # tests
               clanCore.facts.services.wireguard = factGenerators.wireguard "test";
               clanCore.facts.services.tinc = factGenerators.tinc "test";
@@ -65,6 +64,21 @@
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         packages.default = pkgs.hello;
+
+        # test fact generators creation
+        apps.default = {
+          type = "app";
+          program = pkgs.writers.writeBashBin "test"
+            ''
+              export PASSWORD_STORE_DIR=$(mktemp -d)
+              echo PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR
+              ${pkgs.pass}/bin/pass init 389EC2D64AC71EAC
+              ${clan-core.packages.${system}.clan-cli}/bin/clan facts generate test
+              ${clan-core.packages.${system}.clan-cli}/bin/clan facts list test
+              echo "deleting machines folder"
+              rm -rf machines
+            '';
+        };
 
       };
       flake = {
