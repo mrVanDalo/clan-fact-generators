@@ -13,6 +13,7 @@
   };
 
   outputs = inputs@{ flake-parts, clan-core, ... }:
+
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
       imports = [
@@ -22,9 +23,7 @@
       # Define your clan
       clan =
         let
-          pkgs = import inputs.nixpkgs {
-            system = "x86_64-linux";
-          };
+          pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
         in
         {
           # Clan wide settings. (Required)
@@ -49,12 +48,21 @@
               # tests
               clanCore.facts.services.wireguard_a = factGenerators.wireguard { };
               clanCore.facts.services.wireguard_b = factGenerators.wireguard { name = "test"; };
+
               clanCore.facts.services.tinc_a = factGenerators.tinc { };
               clanCore.facts.services.tinc_b = factGenerators.tinc { name = "test"; };
+
               clanCore.facts.services.password_a = factGenerators.password { };
               clanCore.facts.services.password_b = factGenerators.password { name = "test"; };
+
               clanCore.facts.services.ssh_a = factGenerators.ssh { };
               clanCore.facts.services.ssh_b = factGenerators.ssh { name = "test"; };
+
+              clanCore.facts.services.matrix_synapse_a = factGenerators.matrix-synapse { };
+              clanCore.facts.services.matrix_synapse_b = factGenerators.matrix-synapse { name = "test"; };
+
+              # not working
+              # clanCore.facts.services.nix_serve_b = factGenerators.nix-serve { name = "test.org"; };
 
             };
           };
@@ -62,9 +70,6 @@
 
 
       perSystem = { config, self', inputs', pkgs, system, ... }: {
-        # Per-system attributes can be defined here. The self' and inputs'
-        # module parameters provide easy access to attributes of the same
-        # system.
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         packages.default = pkgs.hello;
@@ -87,11 +92,7 @@
 
       };
       flake = {
-        # The usual flake attributes can be defined here, including system-
-        # agnostic ones like nixosModule and system-enumerating ones, although
-        # those are more easily expressed in perSystem.
-
-        lib = import ./lib/generators.nix;
+        lib = import ./lib/generators;
       };
     };
 }
