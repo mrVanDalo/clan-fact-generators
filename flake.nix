@@ -61,6 +61,9 @@
               clanCore.facts.services.matrix_synapse_a = factsGenerator.matrix-synapse { };
               clanCore.facts.services.matrix_synapse_b = factsGenerator.matrix-synapse { name = "test"; };
 
+              clanCore.facts.services.syncthing_a = factsGenerator.syncthing { };
+              clanCore.facts.services.syncthing_b = factsGenerator.syncthing { name = "test"; };
+
               # not working
               # clanCore.facts.services.nix_serve_b = factsGenerator.nix-serve { name = "test.org"; };
 

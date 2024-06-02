@@ -10,5 +10,6 @@ in
 // (import ./nix-serve.nix { inherit pkgs lib; })
 // (import ./password.nix { inherit pkgs lib; })
 // (import ./ssh.nix { inherit pkgs lib; })
+// (import ./syncthing.nix { inherit pkgs lib; })
 // (import ./tinc.nix { inherit pkgs lib; })
   // (import ./wireguard.nix { inherit pkgs lib; })
