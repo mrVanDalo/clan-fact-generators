@@ -29,10 +29,10 @@
           # Clan wide settings. (Required)
           clanName = "test"; # Ensure to choose a unique name.
           specialArgs = {
-            factGenerators = inputs.self.lib { inherit pkgs; };
+            factsGenerator = inputs.self.lib { inherit pkgs; };
           };
           machines = {
-            test = { factGenerators, ... }: {
+            test = { factsGenerator, ... }: {
               imports = [ ];
               nixpkgs.hostPlatform = "x86_64-linux";
               # Set this for clan commands use ssh i.e. `clan machines update`
@@ -46,23 +46,23 @@
               clanCore.facts.publicDirectory = "/dev/null";
 
               # tests
-              clanCore.facts.services.wireguard_a = factGenerators.wireguard { };
-              clanCore.facts.services.wireguard_b = factGenerators.wireguard { name = "test"; };
+              clanCore.facts.services.wireguard_a = factsGenerator.wireguard { };
+              clanCore.facts.services.wireguard_b = factsGenerator.wireguard { name = "test"; };
 
-              clanCore.facts.services.tinc_a = factGenerators.tinc { };
-              clanCore.facts.services.tinc_b = factGenerators.tinc { name = "test"; };
+              clanCore.facts.services.tinc_a = factsGenerator.tinc { };
+              clanCore.facts.services.tinc_b = factsGenerator.tinc { name = "test"; };
 
-              clanCore.facts.services.password_a = factGenerators.password { };
-              clanCore.facts.services.password_b = factGenerators.password { name = "test"; };
+              clanCore.facts.services.password_a = factsGenerator.password { };
+              clanCore.facts.services.password_b = factsGenerator.password { name = "test"; };
 
-              clanCore.facts.services.ssh_a = factGenerators.ssh { };
-              clanCore.facts.services.ssh_b = factGenerators.ssh { name = "test"; };
+              clanCore.facts.services.ssh_a = factsGenerator.ssh { };
+              clanCore.facts.services.ssh_b = factsGenerator.ssh { name = "test"; };
 
-              clanCore.facts.services.matrix_synapse_a = factGenerators.matrix-synapse { };
-              clanCore.facts.services.matrix_synapse_b = factGenerators.matrix-synapse { name = "test"; };
+              clanCore.facts.services.matrix_synapse_a = factsGenerator.matrix-synapse { };
+              clanCore.facts.services.matrix_synapse_b = factsGenerator.matrix-synapse { name = "test"; };
 
               # not working
-              # clanCore.facts.services.nix_serve_b = factGenerators.nix-serve { name = "test.org"; };
+              # clanCore.facts.services.nix_serve_b = factsGenerator.nix-serve { name = "test.org"; };
 
             };
           };

@@ -5,7 +5,7 @@ DRY facts generator lib for [clan](https://clan.lol)
 ```nix
 clan = {
   specialArgs = {
-    factGenerators = clan-fact-generators.lib { inherit pkgs; };
+    factsGenerator = clan-fact-generators.lib { inherit pkgs; };
   };
 };
 ```
@@ -15,13 +15,13 @@ clan = {
 Now you can use the predefined generators
 
 ```nix
-{ factGenerators , ... }:
-with factGenerators;
+{ factsGenerator , ... }:
+with factsGenerator;
 {
-  clanCore.facts.services.wireguard = factGenerators.wireguard "test";
-  clanCore.facts.services.tinc = factGenerators.tinc "test";
-  clanCore.facts.services.password = factGenerators.password "test";
-  clanCore.facts.services.ssh = factGenerators.ssh "test";
+  clanCore.facts.services.wireguard = factsGenerator.wireguard "test";
+  clanCore.facts.services.tinc = factsGenerator.tinc "test";
+  clanCore.facts.services.password = factsGenerator.password "test";
+  clanCore.facts.services.ssh = factsGenerator.ssh "test";
 };
 ```
 
