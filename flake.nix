@@ -47,10 +47,14 @@
               clanCore.facts.publicDirectory = "/dev/null";
 
               # tests
-              clanCore.facts.services.wireguard = factGenerators.wireguard "test";
-              clanCore.facts.services.tinc = factGenerators.tinc "test";
-              clanCore.facts.services.password = factGenerators.password "test";
-              clanCore.facts.services.ssh = factGenerators.ssh "test";
+              clanCore.facts.services.wireguard_a = factGenerators.wireguard { };
+              clanCore.facts.services.wireguard_b = factGenerators.wireguard { name = "test"; };
+              clanCore.facts.services.tinc_a = factGenerators.tinc { };
+              clanCore.facts.services.tinc_b = factGenerators.tinc { name = "test"; };
+              clanCore.facts.services.password_a = factGenerators.password { };
+              clanCore.facts.services.password_b = factGenerators.password { name = "test"; };
+              clanCore.facts.services.ssh_a = factGenerators.ssh { };
+              clanCore.facts.services.ssh_b = factGenerators.ssh { name = "test"; };
 
             };
           };
@@ -75,6 +79,7 @@
               ${pkgs.pass}/bin/pass init 389EC2D64AC71EAC
               ${clan-core.packages.${system}.clan-cli}/bin/clan facts generate test
               ${clan-core.packages.${system}.clan-cli}/bin/clan facts list test
+              pass list
               echo "deleting machines folder"
               rm -rf machines
             '';
