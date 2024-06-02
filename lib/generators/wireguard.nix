@@ -15,7 +15,7 @@ with lib;
       ];
       generator.script = ''
         wg genkey > "$secrets"/${prefix}.key
-        cat "$secrets"/${prefix}.key | wg pubkey > "$facts"/${prefix}.pub
+        cat "$secrets"/${prefix}.key | wg pubkey | tr -d '\n' > "$facts"/${prefix}.pub
       '';
     };
 

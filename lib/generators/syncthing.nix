@@ -19,7 +19,7 @@ with lib;
         syncthing generate --config "$secrets"
         mv "$secrets"/key.pem "$secrets"/${prefix}.key
         mv "$secrets"/cert.pem "$secrets"/${prefix}.cert
-        cat "$secrets"/config.xml | grep -oP '(?<=<device id=")[^"]+' | uniq > "$facts"/${prefix}.pub
+        cat "$secrets"/config.xml | grep -oP '(?<=<device id=")[^"]+' | uniq | tr -d '\n' > "$facts"/${prefix}.pub
       '';
     };
 
