@@ -14,13 +14,15 @@ with lib;
       generator.path = with pkgs; [
         coreutils
         tinc_pre
+        gnugrep
+        gawk
       ];
       generator.script = ''
         tinc --config "$secrets" generate-keys 4096 >/dev/null
         mv "$secrets"/rsa_key.priv     "$secrets"/${prefix}.rsa_key.priv
         mv "$secrets"/ed25519_key.priv "$secrets"/${prefix}.ed25519_key.priv
-        mv "$secrets"/rsa_key.pub                     "$facts"/${prefix}.rsa_key.pub
-        cat "$secrets"/ed25519_key.pub | tr -d '\n' > "$facts"/${prefix}.ed25519_key.pub
+        mv "$secrets"/rsa_key.pub                                                                    "$facts"/${prefix}.rsa_key.pub
+        cat "$secrets"/ed25519_key.pub | grep 'Ed25519PublicKey =' | awk '{print $3}' | tr -d '\n' > "$facts"/${prefix}.ed25519_key.pub
       '';
     };
 
