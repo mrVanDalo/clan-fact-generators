@@ -77,6 +77,13 @@
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         packages.default = pkgs.hello;
 
+
+        devShells.default = pkgs.mkShell {
+          packages = [
+            clan-core.packages.${system}.clan-cli
+          ];
+        };
+
         # test fact generators creation
         apps.default = {
           type = "app";
