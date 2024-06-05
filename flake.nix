@@ -53,7 +53,7 @@
               clanCore.facts.services.tinc_b = factsGenerator.tinc { name = "test"; };
 
               clanCore.facts.services.password_a = factsGenerator.password { };
-              clanCore.facts.services.password_b = factsGenerator.password { name = "test"; };
+              clanCore.facts.services.password_b = factsGenerator.password { name = "test"; phrases = 10;};
 
               clanCore.facts.services.ssh_a = factsGenerator.ssh { };
               clanCore.facts.services.ssh_b = factsGenerator.ssh { name = "test"; };
@@ -94,6 +94,7 @@
               ${pkgs.pass}/bin/pass init 389EC2D64AC71EAC
               ${clan-core.packages.${system}.clan-cli}/bin/clan facts generate test
               ${clan-core.packages.${system}.clan-cli}/bin/clan facts list test
+              echo export PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR
               pass list
               echo "deleting machines folder"
               rm -rf machines
