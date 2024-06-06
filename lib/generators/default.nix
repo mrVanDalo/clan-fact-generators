@@ -12,4 +12,5 @@ in
 // (import ./ssh.nix { inherit pkgs lib; })
 // (import ./syncthing.nix { inherit pkgs lib; })
 // (import ./tinc.nix { inherit pkgs lib; })
+// (import ./tor.nix { inherit pkgs lib; })
   // (import ./wireguard.nix { inherit pkgs lib; })

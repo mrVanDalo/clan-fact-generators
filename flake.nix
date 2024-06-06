@@ -53,7 +53,7 @@
               clanCore.facts.services.tinc_b = factsGenerator.tinc { name = "test"; };
 
               clanCore.facts.services.password_a = factsGenerator.password { };
-              clanCore.facts.services.password_b = factsGenerator.password { name = "test"; phrases = 10;};
+              clanCore.facts.services.password_b = factsGenerator.password { name = "test"; phrases = 10; };
 
               clanCore.facts.services.ssh_a = factsGenerator.ssh { };
               clanCore.facts.services.ssh_b = factsGenerator.ssh { name = "test"; };
@@ -63,6 +63,10 @@
 
               clanCore.facts.services.syncthing_a = factsGenerator.syncthing { };
               clanCore.facts.services.syncthing_b = factsGenerator.syncthing { name = "test"; };
+
+              clanCore.facts.services.tor_a = factsGenerator.tor { };
+              clanCore.facts.services.tor_b = factsGenerator.tor { name = "test"; };
+              clanCore.facts.services.tor_c = factsGenerator.tor { name = "test"; addressPrefix = "palo"; };
 
               # not working
               # clanCore.facts.services.nix_serve_b = factsGenerator.nix-serve { name = "test.org"; };
@@ -76,7 +80,6 @@
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         packages.default = pkgs.hello;
-
 
         devShells.default = pkgs.mkShell {
           packages = [
@@ -93,7 +96,7 @@
               echo PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR
               ${pkgs.pass}/bin/pass init 389EC2D64AC71EAC
               ${clan-core.packages.${system}.clan-cli}/bin/clan facts generate test
-              ${clan-core.packages.${system}.clan-cli}/bin/clan facts list test
+              ${clan-core.packages.${system}.clan-cli}/bin/clan facts list test | ${pkgs.gojq}/bin/gojq
               echo export PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR
               pass list
               echo "deleting machines folder"
