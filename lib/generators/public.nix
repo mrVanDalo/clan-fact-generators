@@ -11,7 +11,7 @@ with lib;
         let
           a = mapAttrsToList
             (name: value: ''
-              echo "${value}" > $facts/${name}
+              echo -n "${value}" > $facts/${name}
             '')
             nameValues;
         in
