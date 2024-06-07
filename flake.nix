@@ -49,6 +49,8 @@
               clanCore.facts.services.wireguard_a = factsGenerator.wireguard { };
               clanCore.facts.services.wireguard_b = factsGenerator.wireguard { name = "test"; };
 
+              clanCore.facts.services.public = factsGenerator.public { ip = "1.2.3.4"; cidr = "1.2.3.4/24"; };
+
               clanCore.facts.services.tinc_a = factsGenerator.tinc { };
               clanCore.facts.services.tinc_b = factsGenerator.tinc { name = "test"; };
 
@@ -66,7 +68,7 @@
 
               clanCore.facts.services.tor_a = factsGenerator.tor { };
               clanCore.facts.services.tor_b = factsGenerator.tor { name = "test"; };
-              clanCore.facts.services.tor_c = factsGenerator.tor { name = "test"; addressPrefix = "palo"; };
+              clanCore.facts.services.tor_c = factsGenerator.tor { name = "test"; };
 
               # not working
               # clanCore.facts.services.nix_serve_b = factsGenerator.nix-serve { name = "test.org"; };
