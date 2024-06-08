@@ -12,7 +12,7 @@ with lib;
         coreutils
       ];
       generator.script = ''
-        head -c4 /dev/urandom | od -A none -t x4 | tr -d '\n' > "$facts"/${prefix}.hostId
+        head -c4 /dev/urandom | od -A none -t x4 | tr -d ' ' | tr -d '\n' > "$facts"/${prefix}.hostId
       '';
     };
 
