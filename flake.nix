@@ -70,6 +70,8 @@
               clanCore.facts.services.tor_b = factsGenerator.tor { name = "test"; };
               clanCore.facts.services.tor_c = factsGenerator.tor { name = "test"; };
 
+              clanCore.facts.services.zfs = factsGenerator.zfs { };
+
               # not working
               # clanCore.facts.services.nix_serve_b = factsGenerator.nix-serve { name = "test.org"; };
 
