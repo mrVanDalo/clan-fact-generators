@@ -18,11 +18,11 @@ Now you can use the predefined generators
 { factsGenerator , ... }:
 with factsGenerator;
 {
-  clanCore.facts.services.wireguard = factsGenerator.wireguard {};
-  clanCore.facts.services.tinc = factsGenerator.tinc {};
-  clanCore.facts.services.password = factsGenerator.password { name = "palo"; };
-  clanCore.facts.services.ssh_host = factsGenerator.ssh { name = "host"; };
-  clanCore.facts.services.ssh_borg = factsGenerator.ssh { name = "borg"; };
+  clan.core.facts.services.wireguard = factsGenerator.wireguard {};
+  clan.core.facts.services.tinc = factsGenerator.tinc {};
+  clan.core.facts.services.password = factsGenerator.password { name = "palo"; };
+  clan.core.facts.services.ssh_host = factsGenerator.ssh { name = "host"; };
+  clan.core.facts.services.ssh_borg = factsGenerator.ssh { name = "borg"; };
 };
 ```
 

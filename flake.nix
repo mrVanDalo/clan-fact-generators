@@ -42,38 +42,38 @@
 
               # There needs to be exactly one controller per clan
               clan.core.networking.zerotier.controller.enable = false;
-              clanCore.facts.secretStore = "password-store";
-              clanCore.facts.publicDirectory = "/dev/null";
+              clan.core.facts.secretStore = "password-store";
+              clan.core.facts.publicDirectory = "/dev/null";
 
               # tests
-              clanCore.facts.services.wireguard_a = factsGenerator.wireguard { };
-              clanCore.facts.services.wireguard_b = factsGenerator.wireguard { name = "test"; };
+              clan.core.facts.services.wireguard_a = factsGenerator.wireguard { };
+              clan.core.facts.services.wireguard_b = factsGenerator.wireguard { name = "test"; };
 
-              clanCore.facts.services.public = factsGenerator.public { ip = "1.2.3.4"; cidr = "1.2.3.4/24"; };
+              clan.core.facts.services.public = factsGenerator.public { ip = "1.2.3.4"; cidr = "1.2.3.4/24"; };
 
-              clanCore.facts.services.tinc_a = factsGenerator.tinc { };
-              clanCore.facts.services.tinc_b = factsGenerator.tinc { name = "test"; };
+              clan.core.facts.services.tinc_a = factsGenerator.tinc { };
+              clan.core.facts.services.tinc_b = factsGenerator.tinc { name = "test"; };
 
-              clanCore.facts.services.password_a = factsGenerator.password { };
-              clanCore.facts.services.password_b = factsGenerator.password { name = "test"; phrases = 10; };
+              clan.core.facts.services.password_a = factsGenerator.password { };
+              clan.core.facts.services.password_b = factsGenerator.password { name = "test"; phrases = 10; };
 
-              clanCore.facts.services.ssh_a = factsGenerator.ssh { };
-              clanCore.facts.services.ssh_b = factsGenerator.ssh { name = "test"; };
+              clan.core.facts.services.ssh_a = factsGenerator.ssh { };
+              clan.core.facts.services.ssh_b = factsGenerator.ssh { name = "test"; };
 
-              clanCore.facts.services.matrix_synapse_a = factsGenerator.matrix-synapse { };
-              clanCore.facts.services.matrix_synapse_b = factsGenerator.matrix-synapse { name = "test"; };
+              clan.core.facts.services.matrix_synapse_a = factsGenerator.matrix-synapse { };
+              clan.core.facts.services.matrix_synapse_b = factsGenerator.matrix-synapse { name = "test"; };
 
-              clanCore.facts.services.syncthing_a = factsGenerator.syncthing { };
-              clanCore.facts.services.syncthing_b = factsGenerator.syncthing { name = "test"; };
+              clan.core.facts.services.syncthing_a = factsGenerator.syncthing { };
+              clan.core.facts.services.syncthing_b = factsGenerator.syncthing { name = "test"; };
 
-              clanCore.facts.services.tor_a = factsGenerator.tor { };
-              clanCore.facts.services.tor_b = factsGenerator.tor { name = "test"; };
-              clanCore.facts.services.tor_c = factsGenerator.tor { name = "test"; };
+              clan.core.facts.services.tor_a = factsGenerator.tor { };
+              clan.core.facts.services.tor_b = factsGenerator.tor { name = "test"; };
+              clan.core.facts.services.tor_c = factsGenerator.tor { name = "test"; };
 
               clanCore.facts.services.zfs = factsGenerator.zfs { };
 
               # not working
-              # clanCore.facts.services.nix_serve_b = factsGenerator.nix-serve { name = "test.org"; };
+              # clan.core.facts.services.nix_serve_b = factsGenerator.nix-serve { name = "test.org"; };
 
             };
           };
