@@ -36,12 +36,12 @@
               imports = [ ];
               nixpkgs.hostPlatform = "x86_64-linux";
               # Set this for clan commands use ssh i.e. `clan machines update`
-              clan.networking.targetHost = pkgs.lib.mkDefault "root@jon";
+              clan.core.networking.targetHost = pkgs.lib.mkDefault "root@jon";
               # remote> lsblk --output NAME,ID-LINK,FSTYPE,SIZE,MOUNTPOINT
               disko.devices.disk.main.device = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b4aec2929";
 
               # There needs to be exactly one controller per clan
-              clan.networking.zerotier.controller.enable = false;
+              clan.core.networking.zerotier.controller.enable = false;
               clanCore.facts.secretStore = "password-store";
               clanCore.facts.publicDirectory = "/dev/null";
 
