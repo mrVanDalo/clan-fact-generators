@@ -1,3 +1,5 @@
+> Deprecated in favor of [clan-vars-generator](https://github.com/mrVanDalo/clan-vars-generator/tree/main)
+
 DRY facts generator lib for [clan](https://clan.lol)
 
 ## How to import in your flake
