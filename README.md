@@ -1,4 +1,4 @@
-> Deprecated in favor of [clan-vars-generator](https://github.com/mrVanDalo/clan-vars-generator/tree/main)
+> Deprecated in favor of [clan-vars-generator](https://github.com/mrVanDalo/clan-vars-generators)
 
 DRY facts generator lib for [clan](https://clan.lol)
 
